@@ -3,8 +3,11 @@ const { Student } = require("../models");
 class StudentController {
   static async getStudent(req, res, next) {
     try {
-      console.log("ok");
-    } catch (error) {}
+      const student = await Student.findAll();
+      res.status(200).json(student);
+    } catch (error) {
+      next(error);
+    }
   }
   static async createStudent(req, res, next) {
     try {

@@ -17,6 +17,14 @@ module.exports = (error, request, response, next) => {
       status = 400;
       message = error.errors[0].message;
       break;
+    case "Student Not found":
+      status = 404;
+      message = "Student Not found";
+      break;
+    case "Course Not found":
+      status = 404;
+      message = "Course Not found";
+      break;
     default:
       status = 500;
       message = "Internal Server Error";

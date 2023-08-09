@@ -39,6 +39,7 @@ module.exports = (sequelize, DataTypes) => {
   Student.beforeCreate((student, Option) => {
     const currentDate = new Date();
     student.age = currentDate.getFullYear() - student.dateofbirdh.getFullYear();
+    if (student.age < 6) throw { name: "Must Be 6 Years Old" };
   });
 
   return Student;

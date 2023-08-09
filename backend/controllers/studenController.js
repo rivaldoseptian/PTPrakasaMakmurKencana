@@ -39,7 +39,7 @@ class StudentController {
         },
         { where: { id } }
       );
-      res.status(200).json(student);
+      res.status(200).json({ message: "Succes Edit Student" });
     } catch (error) {
       console.log(error);
       next(error);

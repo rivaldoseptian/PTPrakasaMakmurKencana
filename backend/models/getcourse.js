@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
       GetCourse.belongsTo(models.Student, {
         foreignKey: "StudentId",
       });
-      GetCourse.belongsTo(models.Student, {
+      GetCourse.belongsTo(models.Course, {
         foreignKey: "CourseId",
       });
     }

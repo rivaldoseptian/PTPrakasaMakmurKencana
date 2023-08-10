@@ -36,13 +36,6 @@ class CourseController {
       const { CourseId } = req.params;
       const { StudentId } = req.body;
 
-      const existingGetCourse = await GetCourse.findOne({
-        where: { StudentId },
-      });
-
-      if (existingGetCourse)
-        throw { name: "StudentId already exists for a course" };
-
       const course = await Course.findByPk(CourseId);
       if (!course) throw { name: "Course Not found" };
       const student = await Student.findByPk(StudentId);
@@ -53,7 +46,17 @@ class CourseController {
       });
       res.status(201).json(getcourse);
     } catch (error) {
-      console.log(error);
+      next(error);
+    }
+  }
+
+  static async courseById(req, res, next) {
+    try {
+      const { id } = req.params;
+      const course = await Course.findByPk(id);
+      if (!course) throw { name: "Course Not found" };
+      res.status(200).json(course);
+    } catch (error) {
       next(error);
     }
   }

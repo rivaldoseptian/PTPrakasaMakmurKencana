@@ -25,6 +25,10 @@ module.exports = (error, request, response, next) => {
       status = 404;
       message = "Course Not found";
       break;
+    case "StudentId already exists for a course":
+      status = 404;
+      message = "Student already exists for a course";
+      break;
     default:
       status = 500;
       message = "Internal Server Error";

@@ -5,4 +5,5 @@ router.get("/", CourseController.getCourse);
 router.post("/", CourseController.createCourse);
 router.put("/:id", CourseController.editCourse);
 
+
 module.exports = router;

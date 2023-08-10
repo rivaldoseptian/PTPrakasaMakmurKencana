@@ -35,6 +35,14 @@ class CourseController {
     try {
       const { CourseId } = req.params;
       const { StudentId } = req.body;
+
+      const existingGetCourse = await GetCourse.findOne({
+        where: { StudentId },
+      });
+
+      if (existingGetCourse)
+        throw { name: "StudentId already exists for a course" };
+
       const course = await Course.findByPk(CourseId);
       if (!course) throw { name: "Course Not found" };
       const student = await Student.findByPk(StudentId);
@@ -58,6 +66,16 @@ class CourseController {
         include: [Student],
       });
       res.status(200).json(course);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  static async deleteStudent(req, res, next) {
+    try {
+      const { StudentId } = req.params;
+      const student = await GetCourse.destroy({ where: { StudentId } });
+      res.status(200).json({ message: "Succes Delete Student" });
     } catch (error) {
       next(error);
     }

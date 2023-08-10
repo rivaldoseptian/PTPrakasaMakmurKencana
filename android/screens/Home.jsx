@@ -18,7 +18,7 @@ export default function HomeScreen({ navigation }) {
           <IconStudent navigation={navigation} />
         </View>
         <View>
-          <IconCourse />
+          <IconCourse navigation={navigation} />
         </View>
       </SafeAreaView>
     </>

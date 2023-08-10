@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 
-export default function Course() {
+export default function Course({ navigation }) {
   return (
     <View style={styles.container}>
-      <View style={[styles.circle, { backgroundColor: "#4e79a7" }]}>
+      <TouchableOpacity
+        style={[styles.circle, { backgroundColor: "#4e79a7" }]}
+        title="Go to Student"
+        onPress={() => navigation.navigate("CoursePage")}
+      >
         <Text style={styles.text}>Course</Text>
-      </View>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -20,6 +24,7 @@ const styles = StyleSheet.create({
   },
   circle: {
     marginLeft: 50,
+    marginBottom: 15,
     alignItems: "center",
     justifyContent: "center",
     width: 270,

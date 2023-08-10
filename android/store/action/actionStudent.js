@@ -46,7 +46,7 @@ export const detailStudent = (id) => {
       const response = await axios.get(baseUrl + "/student/" + id);
       const data = response.data;
       const action = detailFetchStudent(data);
-      console.log(action);
+
       dispatch(action);
     } catch (error) {
       console.log(error);
